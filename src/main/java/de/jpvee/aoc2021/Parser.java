@@ -1,5 +1,7 @@
 package de.jpvee.aoc2021;
 
+import java.util.Arrays;
+
 public interface Parser<D> {
 
     D parse(String input);
@@ -7,6 +9,7 @@ public interface Parser<D> {
     Parser<String> STRING = input -> input;
     Parser<Long> DECIMAL = Long::valueOf;
     Parser<Long> BINARY = input -> Long.valueOf(input, 2);
+    Parser<int[]> INT_ARRAY = input -> Arrays.stream(input.split(",")).mapToInt(Integer::parseInt).toArray();
 
     static <F, S> Parser<Pair<F, S>> pairParser(Parser<F> first, Parser<S> second) {
         return pairParser(first, second, "\\s");

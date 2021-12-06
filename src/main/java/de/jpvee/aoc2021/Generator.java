@@ -89,7 +89,11 @@ public class Generator {
                         InputStreamReader reader = new InputStreamReader(inputStream);
                         BufferedReader lines = new BufferedReader(reader)) {
                     for (String line = lines.readLine(); line != null; line = lines.readLine()) {
-                        if (line.startsWith("<pre><code>")) {
+                        line = line.trim();
+                        if (line.startsWith("<pre><code>") && line.endsWith("</code></pre>")) {
+                            Files.writeString(path, line.substring(11, line.length() - 13));
+                            break;
+                        } else if (line.startsWith("<pre><code>")) {
                             Files.writeString(path, line.substring(11));
                             input = true;
                         } else if (line.startsWith("</code></pre>")) {
