@@ -1,20 +1,11 @@
 package de.jpvee.aoc2021;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class Day06 extends Day<int[]> {
 
     public Day06() {
         super(Parser.INT_ARRAY);
-    }
-
-    private int advance(int timer) {
-        return timer == 0 ? 6 : timer - 1;
     }
 
     private long[] advance(long[] timers) {

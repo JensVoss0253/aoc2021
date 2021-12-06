@@ -1,6 +1,7 @@
 package de.jpvee.aoc2021;
 
-import static de.jpvee.aoc2021.Parser.*;
+import static de.jpvee.aoc2021.Parser.DECIMAL;
+import static de.jpvee.aoc2021.Parser.pairParser;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
