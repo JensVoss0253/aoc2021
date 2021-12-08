@@ -26,4 +26,8 @@ public interface Parser<D> {
         return input -> Enum.valueOf(enumType, input);
     }
 
+    static Parser<String[]> arrayParser(String delim) {
+        return input -> Arrays.stream(input.split(delim)).toArray(String[]::new);
+    }
+
 }
