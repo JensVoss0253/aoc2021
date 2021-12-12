@@ -42,6 +42,16 @@ public abstract class Day<D> {
         }
     }
 
+    protected Day(String inputPath, Parser<D> parser) {
+        try {
+            URL resource = this.getClass().getResource(inputPath);
+            List<String> lines = Files.readAllLines(Paths.get(resource.toURI()));
+            data = lines.stream().map(parser::parse).toList();
+        } catch (IOException | URISyntaxException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
     public List<D> getData() {
         return data;
     }
