@@ -15,13 +15,19 @@ public abstract class Day<D> {
             String dayClass = stackTrace[stackTrace.length - 1].getClassName();
             try {
                 Day<?> day = (Day<?>) Class.forName(dayClass).getConstructor().newInstance();
-                System.out.println("Solution One = " + day.solveOne());
+                long time = -System.currentTimeMillis();
+                long solution = day.solveOne();
+                time += System.currentTimeMillis();
+                System.out.println("Solution One = %d (calculated in %d milliseconds)".formatted(solution, time));
             } catch (UnsupportedOperationException e) {
                 // May be ignored
             }
             try {
                 Day<?> day = (Day<?>) Class.forName(dayClass).getConstructor().newInstance();
-                System.out.println("Solution Two = " + day.solveTwo());
+                long time = -System.currentTimeMillis();
+                long solution = day.solveTwo();
+                time += System.currentTimeMillis();
+                System.out.println("Solution Two = %d (calculated in %d milliseconds)".formatted(solution, time));
             } catch (UnsupportedOperationException e) {
                 // May be ignored
             }
