@@ -18,7 +18,7 @@ public abstract class Day<D> {
                 long time = -System.currentTimeMillis();
                 long solution = day.solveOne();
                 time += System.currentTimeMillis();
-                System.out.println("Solution One = %d (calculated in %d milliseconds)".formatted(solution, time));
+                System.out.printf("Solution One = %d (calculated in %d milliseconds)%n", solution, time);
             } catch (UnsupportedOperationException e) {
                 // May be ignored
             }
@@ -27,7 +27,7 @@ public abstract class Day<D> {
                 long time = -System.currentTimeMillis();
                 long solution = day.solveTwo();
                 time += System.currentTimeMillis();
-                System.out.println("Solution Two = %d (calculated in %d milliseconds)".formatted(solution, time));
+                System.out.printf("Solution Two = %d (calculated in %d milliseconds)%n", solution, time);
             } catch (UnsupportedOperationException e) {
                 // May be ignored
             }
