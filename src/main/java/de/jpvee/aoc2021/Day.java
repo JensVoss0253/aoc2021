@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Day<D> {
@@ -49,12 +50,16 @@ public abstract class Day<D> {
     }
 
     protected Day(String inputPath, Parser<D> parser) {
-        try {
-            URL resource = this.getClass().getResource(inputPath);
-            List<String> lines = Files.readAllLines(Paths.get(resource.toURI()));
-            data = lines.stream().map(parser::parse).toList();
-        } catch (IOException | URISyntaxException e) {
-            throw new IllegalStateException(e);
+        if (inputPath != null) {
+            try {
+                URL resource = this.getClass().getResource(inputPath);
+                List<String> lines = Files.readAllLines(Paths.get(resource.toURI()));
+                data = lines.stream().map(parser::parse).toList();
+            } catch (IOException | URISyntaxException e) {
+                throw new IllegalStateException(e);
+            }
+        } else {
+            data = new ArrayList<>();
         }
     }
 
