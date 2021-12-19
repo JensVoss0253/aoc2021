@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class Day<D> {
     
@@ -43,7 +44,7 @@ public abstract class Day<D> {
         try {
             URL resource = this.getClass().getResource(this.getClass().getSimpleName() + ".txt");
             List<String> lines = Files.readAllLines(Paths.get(resource.toURI()));
-            data = lines.stream().map(parser::parse).toList();
+            data = lines.stream().map(parser::parse).filter(Objects::nonNull).toList();
         } catch (IOException | URISyntaxException e) {
             throw new IllegalStateException(e);
         }
